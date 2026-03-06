@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ImperIA | Estratégia política em um mundo que nunca se repete</title>
+  <meta name="description" content="ImperIA é um jogo de estratégia e simulação política em que cada campanha atravessa eras, crises e decisões que moldam um país único.">
+  <meta name="theme-color" content="#07131d">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ImperIA | Estratégia política em um mundo que nunca se repete">
+  <meta property="og:description" content="Governe um país em constante transformação, atravesse três eras e decida o destino da sua população em uma campanha política cheia de consequências.">
+  <meta property="og:url" content="https://playimperia.games/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ImperIA | Estratégia política em um mundo que nunca se repete">
+  <meta name="twitter:description" content="Estratégia, simulação e decisões políticas em um mundo procedural que muda a cada nova campanha.">
+  <link rel="canonical" href="https://playimperia.games/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Sora:wght@400;500;600;700&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "ImperIA",
+      "url": "https://playimperia.games/",
+      "description": "Jogo de estratégia e simulação política em que o jogador governa um país em três eras diferentes, lidando com leis, crises, eventos e consequências dinâmicas.",
+      "genre": ["Estratégia", "Simulação", "Política"],
+      "inLanguage": "pt-BR",
+      "email": "contato@playimperia.games"
+    }
+  </script>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="ImperIA">
+          <span class="brand-mark">I</span>
+          <span class="brand-text">
+            <strong>ImperIA</strong>
+            <small>playimperia.games</small>
+          </span>
+        </a>
+
+        <nav class="site-nav" aria-label="Navegação principal">
+          <a href="#visao">Visão</a>
+          <a href="#eras">Eras</a>
+          <a href="#sistemas">Sistemas</a>
+          <a href="#sobre">Sobre nós</a>
+          <a href="#contato">Contato</a>
+        </nav>
+
+        <a class="header-cta" href="mailto:contato@playimperia.games">Contato</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-noise" aria-hidden="true"></div>
+        <div class="hero-grid-lines" aria-hidden="true"></div>
+        <div class="hero-glow hero-glow-left" aria-hidden="true"></div>
+        <div class="hero-glow hero-glow-right" aria-hidden="true"></div>
+
+        <div class="container hero-grid">
+          <div class="hero-copy reveal">
+            <p class="eyebrow">Estratégia, política e simulação em primeira pessoa</p>
+            <h1>Governe um país que nunca se repete.</h1>
+            <p class="hero-lead">
+              Em ImperIA, cada decisão redefine o destino da sua população. As leis mudam, o mundo muda, o gabinete muda e você atravessa três eras tentando não perder o controle do próprio poder.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button button-primary" href="#contato">Falar com a equipe</a>
+              <a class="button button-secondary" href="#eras">Conhecer as eras</a>
+            </div>
+
+            <ul class="hero-points" aria-label="Destaques do jogo">
+              <li>Leis sérias, absurdas e imprevisíveis</li>
+              <li>Crises políticas, econômicas e climáticas</li>
+              <li>Três eras conectadas por progressão de campanha</li>
+            </ul>
+
+            <div class="hero-strip">
+              <div class="hero-strip-card">
+                <span>3 eras</span>
+                <strong>Medieval, atual e futurista</strong>
+              </div>
+              <div class="hero-strip-card">
+                <span>9 leituras de gabinete</span>
+                <strong>O ambiente reflete a prosperidade do país</strong>
+              </div>
+              <div class="hero-strip-card">
+                <span>5 frentes de crise</span>
+                <strong>Natureza, guerra, clima, economia e saúde</strong>
+              </div>
+            </div>
+          </div>
+
+          <aside class="command-panel reveal" data-panel aria-label="Painel ilustrativo do jogo">
+            <div class="panel-top">
+              <div>
+                <p>Simulação de gabinete</p>
+                <h2 data-era-title>Reino Fraturado</h2>
+              </div>
+              <span class="signal"><i></i>Sistema vivo</span>
+            </div>
+
+            <div class="policy-card" data-policy-card>
+              <span class="policy-label" data-policy-era>Era Medieval</span>
+              <h3 data-law-title>Tributo sobre as caravanas do rio central</h3>
+              <p data-law-copy>
+                Uma nova proposta chega à sua mesa prometendo fortalecer os cofres do reino sem desagradar comerciantes influentes.
+              </p>
+
+              <div class="policy-actions" aria-hidden="true">
+                <button type="button">Aprovar</button>
+                <button type="button">Negociar</button>
+                <button type="button">Rejeitar</button>
+              </div>
+            </div>
+
+            <div class="panel-metrics">
+              <div class="metric">
+                <div class="metric-head">
+                  <span>Aprovação pública</span>
+                  <strong data-approval-value>78%</strong>
+                </div>
+                <div class="metric-bar metric-bar-approval"><span data-approval-bar style="width: 78%"></span></div>
+              </div>
+
+              <div class="metric">
+                <div class="metric-head">
+                  <span>Saúde fiscal</span>
+                  <strong data-fiscal-value>64%</strong>
+                </div>
+                <div class="metric-bar metric-bar-fiscal"><span data-fiscal-bar style="width: 64%"></span></div>
+              </div>
+
+              <div class="metric">
+                <div class="metric-head">
+                  <span>Estabilidade</span>
+                  <strong data-stability-value>71%</strong>
+                </div>
+                <div class="metric-bar metric-bar-stability"><span data-stability-bar style="width: 71%"></span></div>
+              </div>
+            </div>
+
+            <div class="panel-bottom">
+              <div class="insight">
+                <span>Conselho do vice</span>
+                <p data-vice-copy>"Essa lei pode reforçar sua imagem, mas também atrair disputa entre nobres."</p>
+              </div>
+
+              <div class="world-tags" aria-label="Estado do mundo">
+                <span>Tensão diplomática</span>
+                <span>Safra instável</span>
+                <span>Objetivo ativo</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <div class="scroll-cue" aria-hidden="true">Desça para ver mais</div>
+      </section>
+
+      <section id="visao" class="section intro">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Visão do jogo</p>
+            <h2>Uma campanha política com cara de história viva.</h2>
+            <p>
+              ImperIA mistura gerenciamento, decisões legislativas e leitura de cenário para criar campanhas em que nenhum mandato segue o mesmo roteiro.
+            </p>
+          </div>
+
+          <div class="intro-grid">
+            <article class="intro-card reveal">
+              <span class="intro-stat" data-counter="3">3</span>
+              <h3>Três eras em sequência</h3>
+              <p>
+                A primeira campanha começa na idade média, avança para os tempos atuais e só depois libera o futuro. Ao concluir um capítulo, você pode iniciar novas runs direto daquela era.
+              </p>
+            </article>
+
+            <article class="intro-card reveal">
+              <span class="intro-stat" data-counter="9">9</span>
+              <h3>Leituras de ambiente</h3>
+              <p>
+                O gabinete acompanha a situação econômica da sua civilização. O mesmo poder pode parecer grandioso ou decadente dependendo do estado do país.
+              </p>
+            </article>
+
+            <article class="intro-card reveal">
+              <span class="intro-stat" data-counter="5">5</span>
+              <h3>Frentes de crise</h3>
+              <p>
+                Natureza, guerra, clima, economia e saúde aparecem como forças vivas durante a campanha e exigem respostas rápidas, políticas e muitas vezes impopulares.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="eras" class="section eras">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Progressão</p>
+            <h2>Do castelo ao neon.</h2>
+            <p>
+              O coração de ImperIA é a travessia temporal. O jogador aprende a governar em contextos completamente diferentes sem perder a continuidade política do seu mundo.
+            </p>
+          </div>
+
+          <div class="era-timeline">
+            <article class="era-card reveal era-card-medieval">
+              <span class="era-index">01</span>
+              <h3>Idade média</h3>
+              <p>
+                Nobres, clero, fome, fronteiras vulneráveis e estruturas frágeis. Aqui o poder é físico, simbólico e brutal.
+              </p>
+              <ul>
+                <li>Castelo como centro de comando</li>
+                <li>Leis ligadas a terras, tributos e sobrevivência</li>
+                <li>Conflitos regionais e escassez de recursos</li>
+              </ul>
+            </article>
+
+            <article class="era-card reveal era-card-modern">
+              <span class="era-index">02</span>
+              <h3>Tempos atuais</h3>
+              <p>
+                A pressão muda de rosto: imprensa, opinião pública, empresas, orçamento e desgaste institucional passam a ditar o ritmo do governo.
+              </p>
+              <ul>
+                <li>Prefeitura ou gabinete contemporâneo</li>
+                <li>Leis urbanas, saúde, educação e economia</li>
+                <li>Crises de imagem e decisões de longo prazo</li>
+              </ul>
+            </article>
+
+            <article class="era-card reveal era-card-future">
+              <span class="era-index">03</span>
+              <h3>Futuro cyberpunk</h3>
+              <p>
+                Tecnologia demais não elimina o caos. Só muda o formato do risco: corporações, vigilância, sabotagem e desigualdade escalam junto com o progresso.
+              </p>
+              <ul>
+                <li>Escritório futurista que revela o nível da cidade</li>
+                <li>Leis sobre dados, automação e avanço científico</li>
+                <li>Aliados imprevisíveis e ameaças sistêmicas</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="sistemas" class="section systems">
+        <div class="container systems-layout">
+          <div class="systems-copy reveal">
+            <p class="eyebrow">Sistemas centrais</p>
+            <h2>Todo mandato é um equilíbrio entre ordem, ambição e improviso.</h2>
+            <p>
+              Você não administra só números. Administra símbolos, conflitos, aliados, medo popular, ego político e consequências que demoram a aparecer.
+            </p>
+
+            <div class="systems-list">
+              <article class="system-item">
+                <h3>Leis que mudam de tom</h3>
+                <p>
+                  A mesma proposta pode ser razoável em uma campanha e desastrosa em outra. Tudo depende do mundo gerado, da era em que você está e do estado atual do país.
+                </p>
+              </article>
+
+              <article class="system-item">
+                <h3>Mundo procedural</h3>
+                <p>
+                  Em uma run seu território pode nascer cortado por um grande rio; em outra, água é justamente o recurso mais raro. O cenário altera os desafios de base.
+                </p>
+              </article>
+
+              <article class="system-item">
+                <h3>Eventos dinâmicos</h3>
+                <p>
+                  Desastres naturais, invasões, crises econômicas, doenças e oportunidades inesperadas podem forçar mudanças radicais na forma de governar.
+                </p>
+              </article>
+
+              <article class="system-item">
+                <h3>Objetivos gerados durante a campanha</h3>
+                <p>
+                  Além de sobreviver politicamente, você recebe objetivos que puxam seu governo para caminhos específicos e ajudam a definir o tipo de líder que você se torna.
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <div class="systems-board reveal">
+            <div class="board-window">
+              <div class="window-row">
+                <span>Leis geradas para cada contexto</span>
+                <strong>Sérias, absurdas e cheias de consequência</strong>
+              </div>
+              <div class="window-row">
+                <span>Aprovação da população e da classe política</span>
+                <strong>Duas pressões que raramente querem a mesma coisa</strong>
+              </div>
+              <div class="window-row">
+                <span>IA como motor de variação</span>
+                <strong>Menos repetição, mais identidade por campanha</strong>
+              </div>
+              <div class="window-row">
+                <span>Finais por desempenho e escolhas pessoais</span>
+                <strong>Você pode cair, envelhecer, se aposentar ou sair por cima</strong>
+              </div>
+            </div>
+
+            <div class="event-marquee" aria-label="Exemplos de eventos">
+              <div class="event-track">
+                <span>Tsunami no litoral</span>
+                <span>Aliado rompe pacto</span>
+                <span>Seca prolongada</span>
+                <span>Empresa deixa a cidade</span>
+                <span>Nova cura é descoberta</span>
+                <span>Invasão na fronteira</span>
+                <span>Calor extremo</span>
+                <span>Filial multinacional chega ao país</span>
+                <span>Tsunami no litoral</span>
+                <span>Aliado rompe pacto</span>
+                <span>Seca prolongada</span>
+                <span>Empresa deixa a cidade</span>
+                <span>Nova cura é descoberta</span>
+                <span>Invasão na fronteira</span>
+                <span>Calor extremo</span>
+                <span>Filial multinacional chega ao país</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="gabinete" class="section office">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Gabinete e atmosfera</p>
+            <h2>O ambiente responde ao estado do seu país.</h2>
+            <p>
+              Castelo, prefeitura ou escritório futurista: sua sala muda conforme a era e o nível de prosperidade da civilização. O pano de fundo não é decorativo, ele conta como você está governando.
+            </p>
+          </div>
+
+          <div class="office-grid">
+            <div class="office-column reveal">
+              <h3>Idade média</h3>
+              <div class="office-node poor">Castelo pobre</div>
+              <div class="office-node average">Castelo comum</div>
+              <div class="office-node rich">Castelo rico</div>
+            </div>
+
+            <div class="office-column reveal">
+              <h3>Tempos atuais</h3>
+              <div class="office-node poor">Escritório pequeno</div>
+              <div class="office-node average">Gabinete padrão</div>
+              <div class="office-node rich">Escritório grande e organizado</div>
+            </div>
+
+            <div class="office-column reveal">
+              <h3>Futuro</h3>
+              <div class="office-node poor">Cyberpunk decadente</div>
+              <div class="office-node average">Centro de comando médio</div>
+              <div class="office-node rich">Sala tecnológica de alto padrão</div>
+            </div>
+          </div>
+
+          <div class="office-note reveal">
+            <p>
+              Além das variações econômicas, a sala pode receber personalização de paredes, bandeiras e elementos visuais que reforçam a identidade do seu governo ao longo da campanha.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section vice">
+        <div class="container vice-layout">
+          <div class="vice-card reveal">
+            <p class="eyebrow">Vice-presidente</p>
+            <h2>Seu aliado mais útil também pode ser o mais perigoso.</h2>
+            <p>
+              O vice acompanha as três eras, mantém nome e aparência base, muda de roupa com o tempo e interfere no seu governo de acordo com a própria personalidade.
+            </p>
+          </div>
+
+          <div class="vice-traits">
+            <article class="trait reveal">
+              <h3>Intervenção limitada</h3>
+              <p>Ele pode melhorar uma lei específica poucas vezes, sem apagar o risco da decisão.</p>
+            </article>
+
+            <article class="trait reveal">
+              <h3>Alertas urgentes</h3>
+              <p>Crises inesperadas podem chegar primeiro pela boca dele, junto com escolhas imediatas.</p>
+            </article>
+
+            <article class="trait reveal">
+              <h3>Pistas de consequência</h3>
+              <p>Em vez de revelar tudo, ele sugere direções: militares irritados, ciência acelerada ou desgaste popular.</p>
+            </article>
+
+            <article class="trait reveal">
+              <h3>Leis próprias</h3>
+              <p>Em certos momentos o vice apresenta propostas dele mesmo e observa como você reage.</p>
+            </article>
+
+            <article class="trait reveal">
+              <h3>Personalidade e humor</h3>
+              <p>Leal, ambicioso, populista ou tecnocrata. O jeito dele muda o tipo de ajuda, conflito e replay.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section stakes">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Pressão constante</p>
+            <h2>Em ImperIA, o fim do jogo depende do tipo de governo que você sustenta.</h2>
+            <p>
+              Vitória e derrota não são só uma tela final. Elas emergem do estado da população, da sua imagem, das finanças e dos caminhos que você escolhe seguir.
+            </p>
+          </div>
+
+          <div class="stakes-grid">
+            <article class="stakes-card loss reveal">
+              <span class="stakes-label">Como você perde</span>
+              <h3>Colapso político ou humano</h3>
+              <ul>
+                <li>Aprovação pública ou política cai a um nível crítico</li>
+                <li>Dívidas saem do controle e travam o governo</li>
+                <li>A população entra em colapso ou morre em massa</li>
+                <li>Decisões erradas deixam o país inviável</li>
+              </ul>
+            </article>
+
+            <article class="stakes-card win reveal">
+              <span class="stakes-label">Como você vence</span>
+              <h3>Legado, estabilidade ou fim digno</h3>
+              <ul>
+                <li>Felicidade da população no nível máximo</li>
+                <li>IDH extremamente elevado e governo sólido</li>
+                <li>Objetivos da campanha cumpridos com excelência</li>
+                <li>Aposentadoria escolhida pelo jogador ou morte por velhice</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="sobre" class="section team">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Sobre nós</p>
+            <h2>Uma equipe pequena construindo um jogo com identidade própria.</h2>
+            <p>
+              A seção já está pronta para receber as fotos oficiais da equipe. Enquanto isso, os cards usam imagens locais simples para facilitar a troca quando vocês quiserem atualizar.
+            </p>
+          </div>
+
+          <div class="team-grid">
+            <article class="team-card reveal">
+              <img src="assets/team/gabriel-lentini.svg" alt="Placeholder para a foto de Gabriel Lentini">
+              <div class="team-info">
+                <h3>Gabriel Lentini</h3>
+                <p>Equipe de desenvolvimento</p>
+                <a href="mailto:gabriel_lentini@playimperia.games">gabriel_lentini@playimperia.games</a>
+              </div>
+            </article>
+
+            <article class="team-card reveal">
+              <img src="assets/team/vinicius-santanna.svg" alt="Placeholder para a foto de Vinícius Santanna">
+              <div class="team-info">
+                <h3>Vinícius Santanna</h3>
+                <p>Equipe de desenvolvimento</p>
+                <a href="mailto:santannavini@playimperia.games">santannavini@playimperia.games</a>
+              </div>
+            </article>
+
+            <article class="team-card reveal">
+              <img src="assets/team/felipe-alves.svg" alt="Placeholder para a foto de Felipe Alves">
+              <div class="team-info">
+                <h3>Felipe Alves</h3>
+                <p>Equipe de desenvolvimento</p>
+                <a href="mailto:felipe@playimperia.games">felipe@playimperia.games</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contato" class="section contact">
+        <div class="container contact-box reveal">
+          <div>
+            <p class="eyebrow">Contato</p>
+            <h2>Quer acompanhar o projeto, falar sobre parceria ou receber novidades?</h2>
+            <p>
+              O canal principal de contato do jogo é <a href="mailto:contato@playimperia.games">contato@playimperia.games</a>.
+            </p>
+          </div>
+
+          <div class="contact-actions">
+            <a class="button button-primary" href="mailto:contato@playimperia.games">Enviar e-mail</a>
+            <a class="button button-secondary" href="mailto:felipe@playimperia.games">Falar com Felipe</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>ImperIA</p>
+        <p><span id="year"></span> playimperia.games</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
