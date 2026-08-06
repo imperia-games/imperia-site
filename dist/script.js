@@ -1,4 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const introLoader = document.getElementById("intro-loader");
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const finishIntro = () => {
+    document.body.classList.remove("is-loading");
+    introLoader?.classList.add("is-exiting");
+  };
+  if (introLoader) {
+    window.setTimeout(finishIntro, prefersReducedMotion ? 120 : 5050);
+  }
+
   const year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
 
@@ -43,19 +53,87 @@ document.addEventListener("DOMContentLoaded", () => {
   }, { threshold: 0.3 });
   if (decisionCard) metricObserver.observe(decisionCard);
 
+  const eraTabs = [...document.querySelectorAll(".era-tab")];
+  const eraPanels = [...document.querySelectorAll("[data-era-panel]")];
+  let activeEra = eraTabs.find((tab) => tab.classList.contains("is-active"))?.dataset.era || eraTabs[0]?.dataset.era;
+  let eraLeavingTimer;
+
   const selectEra = (era) => {
-    document.querySelectorAll(".era-tab").forEach((tab) => {
+    if (!era || era === activeEra) return;
+    const currentPanel = eraPanels.find((panel) => panel.dataset.eraPanel === activeEra);
+    const nextPanel = eraPanels.find((panel) => panel.dataset.eraPanel === era);
+    if (!nextPanel) return;
+
+    window.clearTimeout(eraLeavingTimer);
+    eraPanels.filter((panel) => panel !== currentPanel && panel !== nextPanel).forEach((panel) => {
+      panel.classList.remove("is-leaving", "is-active");
+      panel.hidden = true;
+    });
+    eraTabs.forEach((tab) => {
       const active = tab.dataset.era === era;
       tab.classList.toggle("is-active", active);
       tab.setAttribute("aria-selected", String(active));
     });
-    document.querySelectorAll("[data-era-panel]").forEach((panel) => {
-      const active = panel.dataset.eraPanel === era;
-      panel.classList.toggle("is-active", active);
-      panel.hidden = !active;
-    });
+    if (currentPanel) {
+      currentPanel.classList.remove("is-active");
+      currentPanel.classList.add("is-leaving");
+    }
+    nextPanel.hidden = false;
+    nextPanel.classList.remove("is-leaving", "is-active");
+    void nextPanel.offsetWidth;
+    nextPanel.classList.add("is-active");
+    activeEra = era;
+    eraLeavingTimer = window.setTimeout(() => {
+      eraPanels.forEach((panel) => {
+        if (panel.dataset.eraPanel === activeEra) return;
+        panel.classList.remove("is-leaving", "is-active");
+        panel.hidden = true;
+      });
+    }, 780);
   };
-  document.querySelectorAll(".era-tab").forEach((tab) => tab.addEventListener("click", () => selectEra(tab.dataset.era)));
+
+  eraTabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => selectEra(tab.dataset.era));
+    tab.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+      event.preventDefault();
+      const nextIndex = event.key === "Home" ? 0 : event.key === "End" ? eraTabs.length - 1 : (index + (event.key === "ArrowRight" ? 1 : -1) + eraTabs.length) % eraTabs.length;
+      eraTabs[nextIndex].focus();
+      selectEra(eraTabs[nextIndex].dataset.era);
+    });
+  });
+
+  const experienceStates = {
+    contexto: {
+      title: "O contexto muda a decisão.",
+      copy: "Recursos, conflitos e memória definem o ponto de partida."
+    },
+    decisao: {
+      title: "Escolher é assumir um efeito.",
+      copy: "A proposta reorganiza indicadores e abre novas possibilidades."
+    },
+    memoria: {
+      title: "O país registra o que aconteceu.",
+      copy: "Consequências permanecem nas próximas leis, crises e narrativas."
+    }
+  };
+  const experienceMap = document.querySelector("[data-experience-map]");
+  const experienceNodes = [...document.querySelectorAll("[data-experience-step]")];
+  const experienceTitle = document.getElementById("experience-state-title");
+  const experienceCopy = document.getElementById("experience-state-copy");
+  const selectExperienceStep = (step) => {
+    const state = experienceStates[step];
+    if (!state) return;
+    experienceMap?.querySelector(".signal-map")?.setAttribute("data-signal-state", step);
+    experienceNodes.forEach((node) => {
+      const active = node.dataset.experienceStep === step;
+      node.classList.toggle("is-active", active);
+      node.setAttribute("aria-pressed", String(active));
+    });
+    if (experienceTitle) experienceTitle.textContent = state.title;
+    if (experienceCopy) experienceCopy.textContent = state.copy;
+  };
+  experienceNodes.forEach((node) => node.addEventListener("click", () => selectExperienceStep(node.dataset.experienceStep)));
 
   const scenarios = [
     {

@@ -9,17 +9,23 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="imperIA — Toda decisão deixa uma história" />
     <meta property="og:description" content="Uma simulação sociopolítica onde cada decisão altera o presente e permanece na memória do país." />
+    <meta property="og:site_name" content="ImperIA" />
     <meta property="og:url" content="https://playimperia.games/" />
-    <meta property="og:image" content="https://playimperia.games/assets/og.png" />
+    <meta property="og:image" content="https://playimperia.games/assets/imperia-opengraph.png" />
+    <meta property="og:image:alt" content="ImperIA — toda decisão deixa uma história" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://playimperia.games/assets/og.png" />
+    <meta name="twitter:title" content="imperIA — Toda decisão deixa uma história" />
+    <meta name="twitter:description" content="Uma simulação sociopolítica em que cada decisão altera o presente e permanece na memória do país." />
+    <meta name="twitter:image" content="https://playimperia.games/assets/imperia-opengraph.png" />
     <link rel="canonical" href="https://playimperia.games/" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-imperia.png?v=3" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-imperia.png?v=3" />
     <link rel="stylesheet" href="styles.css" />
     <script defer src="script.js"></script>
+    <noscript><style>body.is-loading { overflow-x: hidden; } #intro-loader { display: none; }</style></noscript>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -32,15 +38,29 @@
       }
     </script>
   </head>
-  <body>
+  <body class="is-loading">
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+    <div class="intro-loader" id="intro-loader" role="status" aria-label="Iniciando simulação ImperIA">
+      <div class="intro-loader-content">
+        <div class="intro-text-morph" aria-hidden="true">
+          <svg class="intro-text-morph-filter" viewBox="0 0 1 1"><defs><filter id="intro-text-morph-goo"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 25 -9" result="goo" /><feComposite in="SourceGraphic" in2="goo" operator="atop" /></filter></defs></svg>
+          <div class="intro-text-morph-goo">
+            <div class="intro-text-morph-stack">
+              <span class="intro-text-morph-anchor">presente</span>
+              <span class="intro-text-morph-word" style="--morph-delay: 0s">passado</span>
+              <span class="intro-text-morph-word" style="--morph-delay: 1.2s">presente</span>
+              <span class="intro-text-morph-word" style="--morph-delay: 2.4s">futuro</span>
+              <span class="intro-text-morph-word intro-text-morph-brand" style="--morph-delay: 3.6s">imper<span>IA</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <header class="site-header" id="navbar">
       <div class="shell nav-shell">
-        <a class="brand" href="#top" aria-label="imperIA, início">
-          <span class="brand-symbol" aria-hidden="true"><i></i><b></b><em></em><strong></strong></span>
-          <span>imper<span>IA</span></span>
-        </a>
+        <a class="brand" href="#top" aria-label="imperIA, início"><img class="brand-logo" src="assets/brand/imperia-dark.png" alt="imperIA" /></a>
 
         <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="site-menu" aria-expanded="false">
           <span></span><span></span>
@@ -68,14 +88,6 @@
             <p class="eyebrow"><span></span> Projeto de conclusão de curso · UNIRP</p>
             <h1 id="hero-title">Toda decisão deixa uma <em>história.</em></h1>
             <p class="hero-intro">Uma simulação sociopolítica em que inteligência artificial, regras e decisões humanas constroem mundos que lembram do que você fez.</p>
-
-            <p class="morph-line">
-              <span class="morph-prefix">Um mandato entre o</span>
-              <span class="morph-stack" aria-hidden="true">
-                <span>passado</span><span>presente</span><span>futuro</span><span>imperIA</span>
-              </span>
-              <span class="sr-only">Um mandato entre o passado, o presente, o futuro e ImperIA.</span>
-            </p>
 
             <div class="hero-actions">
               <a class="button button-primary" href="#experiencia">Conhecer a simulação <span aria-hidden="true">↓</span></a>
@@ -127,8 +139,20 @@
 
       <section class="section experience" id="experiencia" aria-labelledby="experience-title">
         <div class="shell">
-          <div class="section-heading reveal">
-            <p class="eyebrow eyebrow-dark"><span></span> A experiência</p>
+          <div class="section-heading experience-heading reveal">
+            <div class="experience-signal" data-experience-map>
+              <p class="eyebrow eyebrow-dark"><span></span> A experiência</p>
+              <div class="signal-map" role="group" aria-label="Fluxo interativo da experiência ImperIA">
+                <span class="signal-ring signal-ring-one" aria-hidden="true"></span>
+                <span class="signal-ring signal-ring-two" aria-hidden="true"></span>
+                <span class="signal-path" aria-hidden="true"></span>
+                <button class="signal-node is-active" type="button" data-experience-step="contexto" aria-pressed="true"><b>01</b><span>Cenário</span></button>
+                <button class="signal-node" type="button" data-experience-step="decisao" aria-pressed="false"><b>02</b><span>Escolha</span></button>
+                <button class="signal-node" type="button" data-experience-step="memoria" aria-pressed="false"><b>03</b><span>Memória</span></button>
+                <div class="signal-core" aria-live="polite"><strong id="experience-state-title">O contexto muda a decisão.</strong><p id="experience-state-copy">Explore os três pontos.</p></div>
+              </div>
+              <p class="signal-hint">Clique nos pontos para acompanhar o fluxo.</p>
+            </div>
             <div>
               <h2 id="experience-title">Não existe uma resposta sem contexto.</h2>
               <p>Em ImperIA, governar é observar o cenário, tomar posição e acompanhar aquilo que a escolha movimentou — agora e depois.</p>
@@ -163,9 +187,7 @@
 
           <div class="memory-flow reveal" data-delay="130" aria-label="Fluxo de uma decisão ao longo do tempo">
             <article class="flow-card decision"><small>ANO 01 · DECISÃO</small><h3>Financiar a nova rota comercial</h3><p>+ receita portuária</p></article>
-            <div class="flow-connector"><span></span><i></i></div>
             <article class="flow-card system"><small>ANO 03 · SISTEMA</small><h3>Região costeira cresce rápido</h3><p>Desigualdade regional em alta</p></article>
-            <div class="flow-connector"><span></span><i></i></div>
             <article class="flow-card consequence"><small>ANO 07 · CONSEQUÊNCIA</small><h3>Protestos exigem redistribuição</h3><p><span>Evento crítico</span> Nova escolha necessária</p></article>
           </div>
         </div>
@@ -183,19 +205,18 @@
             <button class="era-tab" type="button" role="tab" aria-selected="false" aria-controls="era-moderna" id="tab-moderna" data-era="moderna"><span>02</span> Contemporânea</button>
             <button class="era-tab" type="button" role="tab" aria-selected="false" aria-controls="era-futuro" id="tab-futuro" data-era="futuro"><span>03</span> Futuro</button>
           </div>
-
           <div class="era-showcase reveal" data-delay="90">
             <article class="era-panel is-active" id="era-medieval" role="tabpanel" aria-labelledby="tab-medieval" data-era-panel="medieval">
               <div class="era-story"><p class="era-kicker">ERA 01 · 1428</p><h3>O reino nasce entre rios, colheitas e acordos frágeis.</h3><p>Com recursos limitados e pressões religiosas, cada lei interfere na sobrevivência do mandato e no traço que ele deixa para as gerações seguintes.</p><span class="era-material">Papel · tinta · cera</span></div>
-              <div class="era-visual medieval-visual" aria-hidden="true"><span class="map-line line-a"></span><span class="map-line line-b"></span><div class="archive-note"><small>REGISTRO DE COROA</small><strong>Colheita insuficiente<br />em três províncias.</strong><i>− 12</i></div></div>
+              <figure class="era-visual era-visual-image medieval-visual"><img src="assets/eras/era-medieval-editorial.png" alt="Reino medieval entre rio, campos e castelo, cenário da primeira era de ImperIA" /><figcaption>Ambiente da simulação · Era Medieval</figcaption></figure>
             </article>
             <article class="era-panel" id="era-moderna" role="tabpanel" aria-labelledby="tab-moderna" data-era-panel="moderna" hidden>
               <div class="era-story"><p class="era-kicker">ERA 02 · 2026</p><h3>O gabinete administra dados, imprensa e uma população em movimento.</h3><p>O desenvolvimento econômico abre novas rotas, mas a velocidade da informação transforma toda decisão em uma disputa pública.</p><span class="era-material">Impressão · vidro · tela</span></div>
-              <div class="era-visual modern-visual" aria-hidden="true"><div class="news-sheet"><small>EDIÇÃO ESPECIAL</small><strong>O que mudou<br />após a reforma?</strong><span>Indicadores nacionais reagem.</span></div><div class="chart-bars"><i></i><i></i><i></i><i></i><i></i></div></div>
+              <figure class="era-visual era-visual-image modern-visual"><img src="assets/eras/era-contemporanea.png" alt="Gabinete contemporâneo com mesa de decisões e cidade ao fundo" loading="lazy" /><figcaption>Ambiente da simulação · Era Contemporânea</figcaption></figure>
             </article>
             <article class="era-panel" id="era-futuro" role="tabpanel" aria-labelledby="tab-futuro" data-era-panel="futuro" hidden>
               <div class="era-story"><p class="era-kicker">ERA 03 · 2184</p><h3>Memória, tecnologia e autonomia viram assuntos de Estado.</h3><p>Na era futura, os efeitos acumulados das decisões se tornam ainda mais visíveis — e a disputa passa a ser pelo controle do próprio sistema.</p><span class="era-material">Dados · metal · luz</span></div>
-              <div class="era-visual future-visual" aria-hidden="true"><div class="data-orbit"><i></i><i></i><i></i><b>MEMÓRIA<br />NACIONAL</b></div><span class="future-fragment one"></span><span class="future-fragment two"></span><span class="future-fragment three"></span></div>
+              <figure class="era-visual era-visual-image future-visual"><img src="assets/eras/era-futuro.png" alt="Gabinete futuro com mapa nacional luminoso e arquivo histórico" loading="lazy" /><figcaption>Ambiente da simulação · Era Futura</figcaption></figure>
             </article>
           </div>
         </div>
@@ -227,6 +248,6 @@
       <section class="contact-band" aria-labelledby="contact-title"><div class="shell contact-content reveal"><div><p class="eyebrow"><span></span> ImperIA</p><h2 id="contact-title">Governar nunca foi tão imprevisível.</h2></div><a class="button button-light" href="mailto:contato@playimperia.games">Falar com a equipe <span aria-hidden="true">↗</span></a></div></section>
     </main>
 
-    <footer class="site-footer"><div class="shell footer-content"><a class="brand footer-brand" href="#top" aria-label="Voltar ao início"><span class="brand-symbol" aria-hidden="true"><i></i><b></b><em></em><strong></strong></span><span>imper<span>IA</span></span></a><p>Projeto de Conclusão de Curso · UNIRP</p><p>© <span id="year"></span> ImperIA</p></div></footer>
+    <footer class="site-footer"><div class="shell footer-content"><a class="brand footer-brand" href="#top" aria-label="Voltar ao início"><img class="footer-logo" src="assets/brand/imperia-dark.png" alt="imperIA" /></a><p>Projeto de Conclusão de Curso · UNIRP</p><p>© <span id="year"></span> ImperIA</p></div></footer>
   </body>
 </html>
