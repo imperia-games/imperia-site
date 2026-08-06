@@ -6,7 +6,11 @@ document.addEventListener("DOMContentLoaded", () => {
     introLoader?.classList.add("is-exiting");
   };
   if (introLoader) {
-    window.setTimeout(finishIntro, prefersReducedMotion ? 120 : 5050);
+    const introStep = 1350;
+    ["medieval", "contemporanea", "futura", "imperia"].forEach((era, index) => {
+      window.setTimeout(() => introLoader.setAttribute("data-intro-era", era), prefersReducedMotion ? 0 : index * introStep);
+    });
+    window.setTimeout(finishIntro, prefersReducedMotion ? 120 : 6200);
   }
 
   const year = document.getElementById("year");
@@ -55,8 +59,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const eraTabs = [...document.querySelectorAll(".era-tab")];
   const eraPanels = [...document.querySelectorAll("[data-era-panel]")];
+  const timeline = document.querySelector(".memory-flow");
+  const eraThemes = {
+    medieval: {
+      bg: "#FDFBF7", secondary: "#F6EFE5", fg: "#1F1A16", muted: "#756052", border: "#8C6D58", accent: "#D97706",
+      radius: "7px", surface: "rgba(253,251,247,.92)", wash: "rgba(253,251,247,.66)", image: 'url("assets/eras/era-medieval-editorial.png")'
+    },
+    contemporanea: {
+      bg: "#FFFFFF", secondary: "#F8FAFC", fg: "#0F172A", muted: "#64748B", border: "#E2E8F0", accent: "#0284C7",
+      radius: "10px", surface: "rgba(255,255,255,.92)", wash: "rgba(255,255,255,.70)", image: 'url("assets/eras/era-contemporanea.png")'
+    },
+    futuro: {
+      bg: "#F1F5F9", secondary: "#EAF0F8", fg: "#1E293B", muted: "#64748B", border: "rgba(30,41,59,.15)", accent: "#6366F1",
+      radius: "16px", surface: "rgba(255,255,255,.76)", wash: "rgba(241,245,249,.60)", image: 'url("assets/eras/era-futuro.png")'
+    }
+  };
   let activeEra = eraTabs.find((tab) => tab.classList.contains("is-active"))?.dataset.era || eraTabs[0]?.dataset.era;
   let eraLeavingTimer;
+
+  const applyEraTheme = (era) => {
+    const theme = eraThemes[era];
+    if (!theme) return;
+    const root = document.documentElement;
+    root.dataset.eraTheme = era;
+    root.style.setProperty("--era-bg", theme.bg);
+    root.style.setProperty("--era-bg-secondary", theme.secondary);
+    root.style.setProperty("--era-fg", theme.fg);
+    root.style.setProperty("--era-muted", theme.muted);
+    root.style.setProperty("--era-border", theme.border);
+    root.style.setProperty("--era-accent", theme.accent);
+    root.style.setProperty("--era-card-radius", theme.radius);
+    root.style.setProperty("--era-card-surface", theme.surface);
+    root.style.setProperty("--era-wash", theme.wash);
+    root.style.setProperty("--era-image", theme.image);
+  };
 
   const selectEra = (era) => {
     if (!era || era === activeEra) return;
@@ -64,6 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const nextPanel = eraPanels.find((panel) => panel.dataset.eraPanel === era);
     if (!nextPanel) return;
 
+    applyEraTheme(era);
     window.clearTimeout(eraLeavingTimer);
     eraPanels.filter((panel) => panel !== currentPanel && panel !== nextPanel).forEach((panel) => {
       panel.classList.remove("is-leaving", "is-active");
@@ -102,6 +139,23 @@ document.addEventListener("DOMContentLoaded", () => {
       selectEra(eraTabs[nextIndex].dataset.era);
     });
   });
+  applyEraTheme(activeEra);
+
+  let timelineFrame;
+  const updateTimelineProgress = () => {
+    timelineFrame = undefined;
+    if (timeline) {
+      const rect = timeline.getBoundingClientRect();
+      const progress = Math.min(1, Math.max(0, (window.innerHeight * .78 - rect.top) / Math.max(rect.height + window.innerHeight * .15, 1)));
+      timeline.style.setProperty("--timeline-progress", progress.toFixed(3));
+    }
+  };
+  const requestTimelineUpdate = () => {
+    if (!timelineFrame) timelineFrame = window.requestAnimationFrame(updateTimelineProgress);
+  };
+  window.addEventListener("scroll", requestTimelineUpdate, { passive: true });
+  window.addEventListener("resize", requestTimelineUpdate);
+  requestTimelineUpdate();
 
   const experienceStates = {
     contexto: {
@@ -119,11 +173,16 @@ document.addEventListener("DOMContentLoaded", () => {
   };
   const experienceMap = document.querySelector("[data-experience-map]");
   const experienceNodes = [...document.querySelectorAll("[data-experience-step]")];
+  const experienceSteps = experienceNodes.map((node) => node.dataset.experienceStep).filter(Boolean);
   const experienceTitle = document.getElementById("experience-state-title");
   const experienceCopy = document.getElementById("experience-state-copy");
+  let experienceIndex = Math.max(0, experienceSteps.indexOf(experienceNodes.find((node) => node.classList.contains("is-active"))?.dataset.experienceStep));
+  let experienceTimer;
+  let experienceResumeTimer;
   const selectExperienceStep = (step) => {
     const state = experienceStates[step];
     if (!state) return;
+    experienceIndex = Math.max(0, experienceSteps.indexOf(step));
     experienceMap?.querySelector(".signal-map")?.setAttribute("data-signal-state", step);
     experienceNodes.forEach((node) => {
       const active = node.dataset.experienceStep === step;
@@ -133,7 +192,50 @@ document.addEventListener("DOMContentLoaded", () => {
     if (experienceTitle) experienceTitle.textContent = state.title;
     if (experienceCopy) experienceCopy.textContent = state.copy;
   };
-  experienceNodes.forEach((node) => node.addEventListener("click", () => selectExperienceStep(node.dataset.experienceStep)));
+  const stopExperienceAutoplay = () => window.clearInterval(experienceTimer);
+  const startExperienceAutoplay = () => {
+    if (prefersReducedMotion || experienceSteps.length < 2) return;
+    stopExperienceAutoplay();
+    experienceTimer = window.setInterval(() => {
+      const next = (experienceIndex + 1) % experienceSteps.length;
+      selectExperienceStep(experienceSteps[next]);
+    }, 3400);
+  };
+  const pauseExperienceAutoplay = (resumeIn = 5200) => {
+    stopExperienceAutoplay();
+    experienceMap?.classList.add("is-paused");
+    window.clearTimeout(experienceResumeTimer);
+    if (prefersReducedMotion) return;
+    experienceResumeTimer = window.setTimeout(() => {
+      experienceMap?.classList.remove("is-paused");
+      startExperienceAutoplay();
+    }, resumeIn);
+  };
+  const holdExperienceAutoplay = () => {
+    stopExperienceAutoplay();
+    experienceMap?.classList.add("is-paused");
+    window.clearTimeout(experienceResumeTimer);
+  };
+  experienceNodes.forEach((node) => node.addEventListener("click", () => {
+    selectExperienceStep(node.dataset.experienceStep);
+    pauseExperienceAutoplay();
+  }));
+  if (experienceMap && experienceSteps.length > 1 && !prefersReducedMotion) {
+    startExperienceAutoplay();
+    experienceMap.addEventListener("pointerenter", holdExperienceAutoplay);
+    experienceMap.addEventListener("pointerleave", () => {
+      window.clearTimeout(experienceResumeTimer);
+      experienceMap.classList.remove("is-paused");
+      startExperienceAutoplay();
+    });
+    experienceMap.addEventListener("focusin", holdExperienceAutoplay);
+    experienceMap.addEventListener("focusout", (event) => {
+      if (experienceMap.contains(event.relatedTarget)) return;
+      window.clearTimeout(experienceResumeTimer);
+      experienceMap.classList.remove("is-paused");
+      startExperienceAutoplay();
+    });
+  }
 
   const scenarios = [
     {

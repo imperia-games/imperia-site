@@ -62,9 +62,11 @@ A página foi montada para funcionar sem build.
 Passos esperados:
 
 1. subir os arquivos para o repositório
-2. ativar o GitHub Pages na branch principal
+2. em **Settings → Pages**, selecionar **GitHub Actions** como fonte de publicação
 3. manter o `CNAME` com `playimperia.games`
 4. garantir que o domínio esteja apontando para o Pages no provedor de DNS
+
+O workflow em `.github/workflows/deploy-pages.yml` publica apenas a pasta `dist` e aumenta para 30 minutos a espera do `deploy-pages`, evitando o cancelamento automático de 10 minutos do padrão da action.
 
 ## Contato
 
