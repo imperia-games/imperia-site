@@ -178,12 +178,14 @@ section[id] { scroll-margin-top: 88px; }
 .intro-loader::after { display: none; }
 .intro-loader-content { min-width: min(720px, calc(100vw - 44px)); }
 .intro-text-morph { position: relative; display: grid; width: 100%; height: 144px; place-items: center; overflow: hidden; user-select: none; }
-.intro-text-morph-filter { position: absolute; width: 0; height: 0; pointer-events: none; }
-.intro-text-morph-goo { display: grid; width: 100%; height: 100%; place-items: center; filter: url(#intro-text-morph-goo); }
+.intro-text-morph-filter { position: absolute; width: 1px; height: 1px; overflow: hidden; pointer-events: none; opacity: 0; }
+.intro-text-morph-goo { display: grid; width: 100%; height: 100%; place-items: center; -webkit-filter: url("#intro-text-morph-goo"); filter: url("#intro-text-morph-goo"); -webkit-transform: translateZ(0); transform: translateZ(0); isolation: isolate; }
 .intro-text-morph-stack { position: relative; display: inline-flex; min-height: 1.2em; align-items: center; justify-content: center; color: var(--navy); font-family: var(--serif); font-size: clamp(72px, 10vw, 132px); font-style: italic; font-weight: 400; letter-spacing: -.07em; line-height: 1.05; }
 .intro-text-morph-anchor { display: inline-block; visibility: hidden; white-space: nowrap; }
-.intro-text-morph-word { position: absolute; left: 50%; top: 50%; color: var(--navy); opacity: 0; white-space: nowrap; animation: intro-text-morph-word 4.8s var(--morph-delay) 1 cubic-bezier(.785,.135,.15,.86) both; will-change: opacity, filter, transform; }
+.intro-text-morph-word { position: absolute; left: 50%; top: 50%; color: var(--navy); opacity: 0; white-space: nowrap; -webkit-animation: intro-text-morph-word 4.8s var(--morph-delay) 1 cubic-bezier(.785,.135,.15,.86) both; animation: intro-text-morph-word 4.8s var(--morph-delay) 1 cubic-bezier(.785,.135,.15,.86) both; -webkit-animation-play-state: paused; animation-play-state: paused; will-change: opacity, filter, transform; }
+.intro-loader.is-playing .intro-text-morph-word { -webkit-animation-play-state: running; animation-play-state: running; }
 .intro-text-morph-brand { font-family: var(--sans); font-size: .82em; font-style: normal; font-weight: 800; letter-spacing: -.09em; }.intro-text-morph-brand span { color: var(--violet); }
+@-webkit-keyframes intro-text-morph-word { 0% { opacity: 0; -webkit-filter: blur(20px); -webkit-transform: translate(-50%,-50%) scale(.8); } 12.5%, 25% { opacity: 1; -webkit-filter: blur(0); -webkit-transform: translate(-50%,-50%) scale(1); } 43.75%, 100% { opacity: 0; -webkit-filter: blur(20px); -webkit-transform: translate(-50%,-50%) scale(1.2); } }
 @keyframes intro-text-morph-word { 0% { opacity: 0; filter: blur(20px); transform: translate(-50%,-50%) scale(.8); } 12.5%, 25% { opacity: 1; filter: blur(0); transform: translate(-50%,-50%) scale(1); } 43.75%, 100% { opacity: 0; filter: blur(20px); transform: translate(-50%,-50%) scale(1.2); } }
 
 /* Eras move as a small stack of cards and advance every ten seconds. */

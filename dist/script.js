@@ -7,10 +7,16 @@ document.addEventListener("DOMContentLoaded", () => {
   };
   if (introLoader) {
     const introStep = 1350;
-    ["medieval", "contemporanea", "futura", "imperia"].forEach((era, index) => {
-      window.setTimeout(() => introLoader.setAttribute("data-intro-era", era), prefersReducedMotion ? 0 : index * introStep);
-    });
-    window.setTimeout(finishIntro, prefersReducedMotion ? 120 : 6200);
+    const startIntro = () => {
+      introLoader.classList.add("is-playing");
+      ["medieval", "contemporanea", "futura", "imperia"].forEach((era, index) => {
+        window.setTimeout(() => introLoader.setAttribute("data-intro-era", era), prefersReducedMotion ? 0 : index * introStep);
+      });
+      window.setTimeout(finishIntro, prefersReducedMotion ? 120 : 6200);
+    };
+    // Safari/iOS needs one rendered frame before an SVG filter animation starts.
+    // This keeps the original Text Morph, rather than substituting another effect.
+    window.requestAnimationFrame(() => window.requestAnimationFrame(startIntro));
   }
 
   const year = document.getElementById("year");
